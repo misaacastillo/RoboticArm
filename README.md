@@ -8,12 +8,12 @@ Además el modelo dummy contará con un botón en el extremo superior del brazo,
 
 
 
-#BRAZO PRINCIPAL
+BRAZO PRINCIPAL
 
 ![Robotic arm original](https://github.com/user-attachments/assets/95a4489e-d9ec-4b5c-8cb9-1046820a8d12)
 
 
-#MODELO DUMMY:
+MODELO DUMMY:
 
 ![Robotic Arm dummy](https://github.com/user-attachments/assets/aeddc7b3-f517-41e6-88c2-124d52d74de8)
 
