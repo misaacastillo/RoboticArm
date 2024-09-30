@@ -7,12 +7,15 @@ Además el modelo dummy contará con un botón en el extremo superior del brazo,
 
 | 6TO 2DA AVC | COM A | FINAL PROYCT 2024 |
 
-INTEGRANTES: 
 
-- CASTILLO MISAEL
+Brazo Principal:
 
-- SOMOZA JUAN CRUZ
+![Robotic arm original](https://github.com/user-attachments/assets/95a4489e-d9ec-4b5c-8cb9-1046820a8d12)
 
-- BIANCO TOMAS
 
-- TOLOSA RAMIREZ SANTINO
+Modelo dummy:
+
+![Robotic Arm dummy](https://github.com/user-attachments/assets/aeddc7b3-f517-41e6-88c2-124d52d74de8)
+
+
+
