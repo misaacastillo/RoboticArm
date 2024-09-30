@@ -5,7 +5,6 @@ Este modelo copia tendrá una conexión entre sus potenciómetros y los servomot
 Al mover con la mano las 4 articulaciones del modelo dummy provocará que el modelo original se mueva por su cuenta y en sincronía. 
 Además el modelo dummy contará con un botón en el extremo superior del brazo, el cual al ser presionado, accionará la pinza ubicada en el extremo superior del modelo original.
 
-| 6TO 2DA AVC | COM A | FINAL PROYCT 2024 |
 
 
 Brazo Principal:
@@ -17,5 +16,7 @@ Modelo dummy:
 
 ![Robotic Arm dummy](https://github.com/user-attachments/assets/aeddc7b3-f517-41e6-88c2-124d52d74de8)
 
+
+| 6TO 2DA AVC | COM A | FINAL PROYCT 2024 |
 
 
