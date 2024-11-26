@@ -1,15 +1,14 @@
 #include "pico/stdlib.h"
 #include <stdio.h>
 
-#define SERVOPIN0 0
-#define SERVOPIN1 1
-#define POTPIN0 26
-#define POTPIN1 27
-
-#define SERVOPIN2 2
-#define SERVOPIN3 3
-#define POTPIN2 28
-#define POTPIN3 29
-
-#define SERVOPIN4 14
-#define GATEPIN 15
+#define SERVO_PIN1 0
+#define SERVO_PIN2 1
+#define SERVO_PIN3 2
+#define SERVO_PIN4 3
+#define SERVO_PIN5 4
+#define POT_PIN1 26
+#define POT_PIN2 27
+#define POT_PIN3 28
+#define POT_PIN4 29
+#define GATE_PIN 14
+#define SW_PIN 7
