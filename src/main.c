@@ -1,137 +1,40 @@
 #include <stdio.h>
-#include "hardware/pwm.h"
 #include "pico/stdlib.h"
-#include "hardware/adc.h"
+#include "servo_pwm.h"
+#include "adc_input.h"
 #include "proyect.h"
-#include "servo.h"
+#include "servo_pwm.h"
 
-/**
- * @brief Convierte el valor de 12 bits del ADC en un valor
- * para el level del PWM que controla el servo
- * @param adc valor de 12 bits del ADC
- * @return Valor entre 500 y 2500 para setear el gpio level del PWM
-*/
-uint16_t adc_to_gpio_level(uint16_t adc){
-    return (uint16_t)(adc * 2000 / 4095 + 500);
-}
+int main() {
+    stdio_init_all();
+    
+    // Inicializar los pines de los servos
+    servo_init(SERVO_PIN1);
+    servo_init(SERVO_PIN2);
+    servo_init(SERVO_PIN3);
+    servo_init(SERVO_PIN4);
+    servo_init(SERVO_PIN5);
 
-int main(){
-    
-    gpio_init(7);
-    
-    gpio_set_dir(7,false);
+    gate_init(GATE_PIN);
 
-    adc_init();  
-    
-    adc_gpio_init(POTPIN0);
-    
-    adc_gpio_init(POTPIN1);
-    
-    adc_gpio_init(POTPIN2);
-    
-    adc_gpio_init(POTPIN3);
-    
+    // Inicializar los pines de los potenciómetros
+    uint8_t adc_pins[] = {POT_PIN1, POT_PIN2, POT_PIN3, POT_PIN4};
+    adc_init_inputs(adc_pins, 4);
 
-    gpio_set_function(SERVOPIN0, GPIO_FUNC_PWM);
-    
-    gpio_set_function(SERVOPIN1, GPIO_FUNC_PWM);
-    
-    gpio_set_function(SERVOPIN2, GPIO_FUNC_PWM);
-    
-    gpio_set_function(SERVOPIN3, GPIO_FUNC_PWM);
-    
-    gpio_set_function(SERVOPIN4, GPIO_FUNC_PWM);
+    while (true) {
+        // Lee y convierte el valor de cada potenciómetro, y ajusta el servo correspondiente
+        set_servo_angle(SERVO_PIN1, adc_to_angle(adc_read_value(0)));
+        set_servo_angle(SERVO_PIN2, adc_to_angle(adc_read_value(1)));
+        set_servo_angle(SERVO_PIN3, adc_to_angle(adc_read_value(2)));
+        set_servo_angle(SERVO_PIN4, adc_to_angle(adc_read_value(3)));
 
-    gpio_set_function(GATEPIN, GPIO_FUNC_PWM);
+        sleep_ms(20); // Pequeño retardo para estabilizar el movimiento del servo
 
-    const uint8_t slice0= pwm_gpio_to_slice_num(SERVOPIN0);
-    
-    const uint8_t slice1= pwm_gpio_to_slice_num(SERVOPIN1);
-    
-    const uint8_t slice2= pwm_gpio_to_slice_num(SERVOPIN2);
-    
-    const uint8_t slice3= pwm_gpio_to_slice_num(SERVOPIN3);
-    
-    const uint8_t slice4= pwm_gpio_to_slice_num(SERVOPIN4);
+        if (SW_PIN == 0) {
 
-    const uint8_t slice5= pwm_gpio_to_slice_num(GATEPIN);
+            set_servo_angle(SERVO_PIN4, 270);
 
-    pwm_config config= pwm_get_default_config();
-    
-    pwm_config_set_clkdiv(&config, 125);
-    
-    pwm_config_set_wrap(&config, 20000);
-
-    pwm_init(slice0, &config, true);
-    
-    pwm_init(slice1, &config, true);
-    
-    pwm_init(slice2, &config, true);
-    
-    pwm_init(slice3, &config, true); 
-    
-    pwm_init(slice4, &config, true);  
-
-
-    pwm_config config1= pwm_get_default_config();
-
-    pwm_config_set_clkdiv(&config1, 125);
-
-
-
-    
-    while(true) {
-
-    
-        if (gpio_get(7) == 1){
-    
-        set_servo_angle(2,SERVOPIN4, 270);
-    
-        } 
-        
-        else {
-        
-        set_servo_angle(2,SERVOPIN4, 0.0);  
-                
-        }
-
-
-    adc_select_input(0);
-    
-    uint16_t adc_value0 = adc_read();
-     
-     adc_select_input(1);
-    
-    uint16_t adc_value1 = adc_read();
-     
-     adc_select_input(2);
-    
-    uint16_t adc_value2 = adc_read();
-     
-     adc_select_input(3);
-    
-    uint16_t adc_value3 = adc_read();
-        
-    uint16_t level1 = adc_to_gpio_level(adc_value0);
-    
-    pwm_set_gpio_level(SERVOPIN0, level1);
-        
-    uint16_t level2 = adc_to_gpio_level(adc_value1);
-    
-    pwm_set_gpio_level(SERVOPIN1, level2);
-        
-    uint16_t level3 = adc_to_gpio_level(adc_value2);
-    
-    pwm_set_gpio_level(SERVOPIN2, level3);
-        
-    uint16_t level4 = adc_to_gpio_level(adc_value3);
-    
-    pwm_set_gpio_level(SERVOPIN3, level4);
-        
-        
-    sleep_ms(10); 
-    
     }
 
+    return 0;
 }
-
