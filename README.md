@@ -18,6 +18,17 @@ Además el modelo dummy contará con un botón en el extremo superior del brazo,
 ![Robotic Arm dummy](https://github.com/user-attachments/assets/aeddc7b3-f517-41e6-88c2-124d52d74de8)
 
 
-| 6TO 2DA AVC | COM A | FINAL PROYCT 2024 |
+## Contacto
+### Misael Castillo
+* 📷 Instagram: [@misaacas](https://www.instagram.com/misaacas/)
+* 📧 Mail: misacastillo08@gmail.com
+* 🏆 LinkedIn: [Castillo Misael](https://www.linkedin.com/in/misael-castillo-0a52a1314/)
+* 🌐 Github: [misaacastillo](https://github.com/misaacastillo)
+
+
+## 📜 Licencia
+
+Este proyecto está licenciado bajo la [MIT License](LICENSE).  
+© 2024 Robotic Arm By Misael Castilo
 
 
